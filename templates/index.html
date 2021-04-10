@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="text-center">Contacts XML Database</h1>
+        <form action="/" method="get" class="d-flex justify-content-center">
+            <label>Поиск: <input class="form-control" type="text" name="q" value="{{ search_text }}"></label>
+        </form>
+        <a href="/new/" class="btn btn-info">Новая запись</a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Имя</th>
+                <th>Адрес</th>
+                <th>Номера телефонов</th>
+                <th>Работы</th>
+                <th>Фото</th>
+                <th>Действия</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for contact in contacts %}
+                <tr>
+                    <td>{{ contact.fio }}</td>
+                    <td>{{ contact.address }}</td>
+                    <td>
+                        {% if contact.phone_numbers %}
+                            <ul class="list-group list-group-flush">
+                                {% for phone_number in contact.phone_numbers %}
+                                    <li class="list-group-item">{{ phone_number }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>Неизвестно</p>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if contact.works %}
+                            <ul class="list-group list-group-flush">
+                                {% for work in contact.works %}
+                                    <li class="list-group-item">
+                                        <p>{{ work.address }}</p>
+                                        <h5>Должность(и)</h5>
+                                        <ul class="list-group list-group-flush list-group-numbered">
+                                            {% for job in work.jobs %}
+                                                <li class="list-group-item">{{ job }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>Неизвесно</p>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if contact.photos %}
+                            {% for photo_url in contact.photos %}
+                                <a href="{{ photo_url }}"><img src="{{ photo_url }}" alt="" class="img-thumbnail"></a>
+                            {% endfor %}
+
+                        {% else %}
+                            <p>Неизвестно</p>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <form action="/{{ contact.pk }}/delete/" method="post">
+                            <button class="btn btn-danger">Удалить</button>
+                        </form>
+                        <form action="/{{ contact.pk }}/copy/" method="post" class="mt-1">
+                            <button class="btn btn-outline-info">Копировать</button>
+                        </form>
+                        <a href="/{{ contact.pk }}/edit/" class="btn btn-info mt-1">Изменить</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <form action="/save/" method="post">
+            <input type="hidden" name="pk" value="{{ pk }}">
+
+            <div class="mb-3">
+              <label for="firstname" class="form-label">Имя</label>
+              <input type="text" class="form-control" id="firstname" name="firstname" value="{{ firstname }}">
+            </div>
+            <div class="mb-3">
+              <label for="lastname" class="form-label">Фамилия</label>
+              <input type="text" class="form-control" id="lastname" name="lastname" value="{{ lastname }}">
+            </div>
+            <div class="mb-3">
+              <label for="surname" class="form-label">Отчество</label>
+              <input type="text" class="form-control" id="surname" name="surname" value="{{ surname }}">
+            </div>
+            <div class="mb-3">
+              <label for="address" class="form-label">Адрес</label>
+              <input type="text" class="form-control" id="address" name="address" value="{{ address }}">
+            </div>
+            <div class="mb-3">
+              <label for="phone_numbers" class="form-label">Номера телефонов</label>
+                <textarea rows="3" class="form-control" id="phone_numbers" name="phone_numbers">{{ phone_numbers }}</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="works" class="form-label">Работы</label>
+                <textarea rows="8" class="form-control" id="works" name="works">{{ works }}</textarea>
+            </div>
+            <div class="mb-3">
+              <label for="photos" class="form-label">Фото</label>
+                <textarea rows="3" class="form-control" id="photos" name="photos">{{ photos }}</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </form>
+    </div>
+{% endblock %}
