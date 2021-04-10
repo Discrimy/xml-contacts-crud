@@ -6,32 +6,43 @@
             <input type="hidden" name="pk" value="{{ pk }}">
 
             <div class="mb-3">
-              <label for="firstname" class="form-label">Имя</label>
-              <input type="text" class="form-control" id="firstname" name="firstname" value="{{ firstname }}">
+                <label for="firstname" class="form-label">Имя</label>
+                <input type="text" class="form-control" id="firstname" name="firstname" value="{{ firstname }}">
             </div>
             <div class="mb-3">
-              <label for="lastname" class="form-label">Фамилия</label>
-              <input type="text" class="form-control" id="lastname" name="lastname" value="{{ lastname }}">
+                <label for="lastname" class="form-label">Фамилия</label>
+                <input type="text" class="form-control" id="lastname" name="lastname" value="{{ lastname }}">
             </div>
             <div class="mb-3">
-              <label for="surname" class="form-label">Отчество</label>
-              <input type="text" class="form-control" id="surname" name="surname" value="{{ surname }}">
+                <label for="surname" class="form-label">Отчество</label>
+                <input type="text" class="form-control" id="surname" name="surname" value="{{ surname }}">
             </div>
             <div class="mb-3">
-              <label for="address" class="form-label">Адрес</label>
-              <input type="text" class="form-control" id="address" name="address" value="{{ address }}">
+                <label for="address" class="form-label">Адрес</label>
+                <input type="text" class="form-control" id="address" name="address" value="{{ address }}">
             </div>
             <div class="mb-3">
-              <label for="phone_numbers" class="form-label">Номера телефонов</label>
-                <textarea rows="3" class="form-control" id="phone_numbers" name="phone_numbers">{{ phone_numbers }}</textarea>
+                <label for="phone_numbers" class="form-label">Номера телефонов</label>
+                <textarea rows="3" class="form-control" id="phone_numbers"
+                          name="phone_numbers">{{ phone_numbers }}</textarea>
+                <small id="phone_numbers_help" class="form-text text-muted">
+                    Каждый номер в новой строке.
+                </small>
             </div>
             <div class="mb-3">
-              <label for="works" class="form-label">Работы</label>
+                <label for="works" class="form-label">Работы</label>
                 <textarea rows="8" class="form-control" id="works" name="works">{{ works }}</textarea>
+                <small id="works_help" class="form-text text-muted">
+                    Каждое место работы через новую строку с пропуском.
+                    Первая строка в каждом месте работы адресс, остальные - дожности.
+                </small>
             </div>
             <div class="mb-3">
-              <label for="photos" class="form-label">Фото</label>
+                <label for="photos" class="form-label">Фото</label>
                 <textarea rows="3" class="form-control" id="photos" name="photos">{{ photos }}</textarea>
+                <small id="photos_help" class="form-text text-muted">
+                    Каждый URL фото в новой строке.
+                </small>
             </div>
 
             <button type="submit" class="btn btn-primary">Сохранить</button>
